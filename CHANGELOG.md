@@ -4,6 +4,10 @@ Historical changelog for all versions.
 
 ## HEAD
 
+## v1.1.0
+
+* Added support for passing parallelism cost to `Argon2::Password.create`
+
 ## v1.0.0
 
 This project has been forked from

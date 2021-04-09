@@ -57,9 +57,14 @@ NOTE: `X.Y.Z` and `vX.Y.Z` are given as examples, and should be replaced with
 1. Stage your changes and create a commit
    1. `git add -A`
    1. `git commit -m "Release vX.Y.Z"`
-   1. `git push`
-1. Gem Release
+1. Ensure all tests are passing
+   1. `./bin/setup`
+   1. `./bin/test`
+   1. `rake default`
+1. Build the Gem
    1. `gem build`
+   1. Test installation: `gem install sorcery-argon2-X.Y.Z.gem`
+1. Push the new release
+   1. `git push`
    1. `gem push <filename>`
-1. TODO: Version tagging
    1. Release new version via github interface
