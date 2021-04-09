@@ -6,6 +6,8 @@ move an existing application from `argon2` to `sorcery-argon2`.
 
 [Why was `argon2` forked?](https://github.com/technion/ruby-argon2/pull/44#issuecomment-816271661)
 
+Currently in sync with: `argon2 - v2.1.0`
+
 ## Table of Contents
 
 1. [Useful Links](#useful-links)
@@ -115,7 +117,7 @@ instance.create(input_password)
 Argon2::Password.create(input_password, m_cost: some_m_cost)
 ```
 
-**Argon2::Password.create no longer accept custom salts.**
+**Argon2::Password.create no longer accepts custom salts.**
 
 You should not be providing your own salt to the Argon2 algorithm (it does it
 for you). Previously you could pass an option of `salt_do_not_supply`, which has
