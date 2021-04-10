@@ -257,9 +257,9 @@ Argon2::Password.create(input_password, m_cost: some_m_cost)
 
 *Argon2::Password.create no longer accepts custom salts.*
 
-You should not be providing your own salt to the Argon2 algorithm (it does it
-for you). Previously you could pass an option of `salt_do_not_supply`, which has
-been removed in `sorcery-argon2 - v1.0.0`.
+You should not be providing your own salt to the Argon2 algorithm (this library
+does it for you). Previously you could pass an option of `salt_do_not_supply`,
+which has been removed in `sorcery-argon2 - v1.0.0`.
 
 ### The errors have been restructured
 
