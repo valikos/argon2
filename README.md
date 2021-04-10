@@ -18,8 +18,8 @@ This fork is kept up-to-date with `argon2`, latest sync: `argon2 - v2.1.0`
 1. [Useful Links](#useful-links)
 2. [API Summary](#api-summary)
 3. [Installation](#installation)
-4. [Migrating from `argon2` to `sorcery-argon2`](#migrating-from-argon2-to-sorcery-argon2)
-5. [Why fork `argon2`?](#why-fork-argon2)
+4. [Why fork `argon2`?](#why-fork-argon2)
+5. [Migrating from `argon2` to `sorcery-argon2`](#migrating-from-argon2-to-sorcery-argon2)
 6. [Contributing](#contributing)
 7. [Contact](#contact)
 8. [License](#license)
@@ -99,58 +99,6 @@ Require Sorcery-Argon2 in your project:
 
 ```ruby
 require 'argon2'
-```
-
-## Migrating from `argon2` to `sorcery-argon2`
-
-There are two primary changes going from `argon2` to `sorcery-argon2`:
-
-### The Argon2::Password API has been refactored
-
-*Argon2::Password.new and Argon2::Password.create are now different.*
-
-Argon2::Passwords can now be created without initializing an instance first.
-
-To upgrade:
-
-```ruby
-# Take instances where you abstract creating the password by first exposing an
-# Object instance:
-instance = Argon2::Password.new(m_cost: some_m_cost)
-instance.create(input_password)
-
-# And remove the abstraction step:
-Argon2::Password.create(input_password, m_cost: some_m_cost)
-```
-
-*Argon2::Password.create no longer accepts custom salts.*
-
-You should not be providing your own salt to the Argon2 algorithm (it does it
-for you). Previously you could pass an option of `salt_do_not_supply`, which has
-been removed in `sorcery-argon2 - v1.0.0`.
-
-### The errors have been restructured
-
-**The root level error has been renamed.**
-
-Argon2::ArgonHashFail has been renamed to Argon2::Error
-
-To upgrade:
-
-```ruby
-# Find any instances of Argon2::ArgonHashFail, for example...
-def login(username, password)
-  [...]
-rescue Argon2::ArgonHashFail
-  [...]
-end
-
-# And do a straight 1:1 replacement
-def login(username, password)
-  [...]
-rescue Argon2::Error
-  [...]
-end
 ```
 
 ## Why fork `argon2`?
@@ -282,6 +230,58 @@ issues, and has 100% documentation of the API.
 
 * [`argon2` Documentation](https://rubydoc.info/gems/argon2)
 * [`sorcery-argon2` Documentation](https://rubydoc.info/gems/sorcery-argon2)
+
+## Migrating from `argon2` to `sorcery-argon2`
+
+There are two primary changes going from `argon2` to `sorcery-argon2`:
+
+### The Argon2::Password API has been refactored
+
+*Argon2::Password.new and Argon2::Password.create are now different.*
+
+Argon2::Passwords can now be created without initializing an instance first.
+
+To upgrade:
+
+```ruby
+# Take instances where you abstract creating the password by first exposing an
+# Object instance:
+instance = Argon2::Password.new(m_cost: some_m_cost)
+instance.create(input_password)
+
+# And remove the abstraction step:
+Argon2::Password.create(input_password, m_cost: some_m_cost)
+```
+
+*Argon2::Password.create no longer accepts custom salts.*
+
+You should not be providing your own salt to the Argon2 algorithm (it does it
+for you). Previously you could pass an option of `salt_do_not_supply`, which has
+been removed in `sorcery-argon2 - v1.0.0`.
+
+### The errors have been restructured
+
+**The root level error has been renamed.**
+
+Argon2::ArgonHashFail has been renamed to Argon2::Error
+
+To upgrade:
+
+```ruby
+# Find any instances of Argon2::ArgonHashFail, for example...
+def login(username, password)
+  [...]
+rescue Argon2::ArgonHashFail
+  [...]
+end
+
+# And do a straight 1:1 replacement
+def login(username, password)
+  [...]
+rescue Argon2::Error
+  [...]
+end
+```
 
 ## Contributing
 
