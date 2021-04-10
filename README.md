@@ -108,7 +108,8 @@ ruby wrapper (`argon2` - [technion/ruby-argon2](https://github.com/technion/ruby
 had some questionable design decisions, and attempted to address them through a
 pull request. The sole maintainer of the gem rejected these changes summarily,
 without pointing out any specific concerns other than not understanding why the
-changes were necessary. This lead to me being directed to create a fork instead:
+changes were necessary. This lead to me ([@athix](https://github.com/athix))
+being directed to create a fork instead:
 [technion/ruby-argon2#44](https://github.com/technion/ruby-argon2/pull/44#issuecomment-816271661)
 
 ### Why should I trust this fork?
@@ -122,8 +123,9 @@ through the sheer number of intelligent community members looking at the code.
 That being said, the original library `argon2` also falls under the same
 category. Ultimately, it was also written by a single person and is not
 thoroughly vetted by the community at the time of writing. A community member
-(me, in this case) finding flaws in the implementation, and the fixes being
-rejected from upstream, is how this fork came into being.
+([@athix](https://github.com/athix), in this case) finding flaws in the
+implementation, and the fixes being rejected from upstream, is how this fork
+came into being.
 
 ### What are the changes, why are they necessary?
 
