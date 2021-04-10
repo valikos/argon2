@@ -27,10 +27,25 @@ module Argon2
     # Used to validate the maximum acceptable parallelism cost
     MAX_P_COST = 8
     # The complete Argon2 digest string (not to be confused with the checksum).
+    #
+    # For a detailed description of the digest format, please see:
+    # https://github.com/P-H-C/phc-string-format/blob/master/phc-sf-spec.md
     attr_reader :digest
-    # The hash portion of the stored password hash.
+    # The hash portion of the stored password hash. This is Base64 encoded by
+    # default.
     attr_reader :checksum
-    # The salt of the stored password hash.
+    # The salt of the stored password hash. This is Base64 encoded by default.
+    #
+    # To retrieve the original salt:
+    #
+    #    require 'base64'
+    #
+    #    argon2 = Argon2::Password.new(digest)
+    #
+    #    argon2.salt
+    #    => Base64 encoded salt
+    #    Base64.decode64(argon2.salt)
+    #    => original salt
     attr_reader :salt
     # Variant used (argon2i / argon2d / argon2id)
     attr_reader :variant
